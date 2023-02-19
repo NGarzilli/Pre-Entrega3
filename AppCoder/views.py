@@ -2,12 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-from AppCoder.models import Club
+#from AppCoder.models import Club
 
 # Create your views here.
-def club(request):
-    club = Club(nombre= 'Chelsea Football Club', agno_fundacion='1905')
-    club.save()
-    respuesta= f'Club: {club.nombre}, Año fundacion: {club.agno_fundacion}'
 
-    return HttpResponse(respuesta)
+
+def inicio(request):
+    return render(request, 'AppCoder/inicio.html')
+
+
+def club(request):
+    return render(request, 'AppCoder/club.html')
+
+
+def dt(request):
+    return render(request, 'AppCoder/dt.html')
+
+
+def jugadores(request):
+    return render(request, 'AppCoder/jugadores.html')
