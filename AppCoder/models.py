@@ -6,10 +6,13 @@ class Club(models.Model):
     agno_fundacion = models.IntegerField()
     #sigla= models.CharField(max_length=6)
 
+    class Meta:
+        verbose_name_plural = 'Clubes'
+
     def __str__(self):
         return self.nombre #+ '(' + str(self.sigla) +')'
 
-class DT(models.Model):
+class Dt(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     club = models.CharField(max_length=40)
@@ -22,6 +25,9 @@ class Jugador(models.Model):
     apellido = models.CharField(max_length=40)
     club = models.CharField(max_length=40)
     goles = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = 'Jugadores'
 
     def __str__(self):
         return self.nombre +  ' ' + self.apellido + ' (' + self.club + ')'

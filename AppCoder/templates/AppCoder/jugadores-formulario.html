@@ -1,0 +1,33 @@
+{% extends 'AppCoder/padre.html' %}
+
+{% block titulo %}
+Formulario - Agregar Jugador
+{% endblock %}
+
+{% block contenido %}
+
+<section class="features-icons bg-light">
+    <div class="container">
+        </div class="row">
+            </div class="col-lg-12"> 
+
+                {% if jugadores_formulario.errors %} 
+                <p style="color:red;">Los datos son incorrectos. </p>    
+                {% endif %}
+                   
+                <form action="{% url 'jugadores-formulario' %}" method="POST">
+                    {% csrf_token %}
+                   
+                    <table>
+                        {{ jugadores_formulario.as_table }}
+                    </table>
+                    
+                    <input type="submit" value="Agregar"> 
+
+                </form>
+            </div>     
+        </div>    
+    </div> 
+</section>
+
+{% endblock %}
