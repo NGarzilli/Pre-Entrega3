@@ -4,8 +4,6 @@ from django.http import HttpResponse
 from .models import Club, Dt, Jugador
 from .forms import ClubFormulario, DtFormulario, JugadoresFormulario
 
-#from AppCoder.models import Club
-
 # Create your views here.
 
 
@@ -25,10 +23,6 @@ def jugadores(request):
     return render(request, 'AppCoder/jugadores.html')
 
 def club_formulario(request):
-    # if request.method == 'POST':
-    #     club = Club(nombre=request.POST['club'], agno_fundacion=request.POST['agno'])
-    #     club.save()
-    #     return render(request, 'AppCoder/inicio.html')
 
     if request.method == 'POST':
         formulario = ClubFormulario(request.POST)
@@ -74,6 +68,11 @@ def buscar_club(request):
     return render(request, 'AppCoder/buscar-club.html')
 
 def buscar(request):
-    respuesta = f'Buscar club: {request.GET["club"]}'
-    
+    if request.GET['club']:
+        mi_club = request.GET['club']
+        resultado= Club.objects.filter(nombre__icontains = mi_club)
+
+        return render(request, 'AppCoder/resultado-busqueda.html', {'nombre': resultado, 'club': mi_club})
+
+    respuesta = 'No se encuentra el club en la base de datos'
     return HttpResponse(respuesta)

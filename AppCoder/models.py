@@ -4,13 +4,12 @@ from django.db import models
 class Club(models.Model):
     nombre = models.CharField(max_length=60)
     agno_fundacion = models.IntegerField()
-    #sigla= models.CharField(max_length=6)
-
+    
     class Meta:
         verbose_name_plural = 'Clubes'
 
     def __str__(self):
-        return self.nombre #+ '(' + str(self.sigla) +')'
+        return self.nombre 
 
 class Dt(models.Model):
     nombre = models.CharField(max_length=40)

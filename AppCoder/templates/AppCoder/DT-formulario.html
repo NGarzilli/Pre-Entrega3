@@ -17,9 +17,7 @@ Formulario - Agregar DT
                    
                 <form action="{% url 'dt-formulario' %}" method="POST">
                     {% csrf_token %}
-                    <!-- <p>Nombre del club: <input type='text' name="club"></p> 
-                    <p>Año de fundacion: <input type='number' name="agno"></p> 
-                    -->
+                
                     <table>
                         {{ dt_formulario.as_table }}
                     </table>
